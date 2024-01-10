@@ -1,21 +1,35 @@
 package com.carrental.CarRental.Controller;
 
 import com.carrental.CarRental.Data.Model.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.carrental.CarRental.Data.Model.UserRegisterParam;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-@RestController("/v1/user")
+import java.net.URI;
+
+@RestController
+@RequestMapping("/v1/user")
 public class UserController {
 
     // User register,Login,Crud
+    //status 500
+    //{
+    //code: 401
+    //message:"Invalid First Name"
+    //}
+
+
+    //Todo response with exception in validation
     @PostMapping("/register")
-    void registerUser(@RequestBody User user){
+   UserRegisterParam registerUser(@Valid @RequestBody UserRegisterParam param){
         //First Name
         //Last Name
         //email required
         //phone optional
         //password
+
 
         //book ->
         //dob
@@ -25,9 +39,14 @@ public class UserController {
         //Country
         //IC
 
+        //validate userInput
+        //save to db
+        //return success or not
+        return param;
+
     }
     @PostMapping("/login")
-    void loginUser(@RequestBody User user){
+    void loginUser(@RequestParam(value = "email")String email,@RequestParam(value = "password")String password){
         //email
         //password
     }
