@@ -1,8 +1,6 @@
 package com.carrental.CarRental.Data.Model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.*;
 
 @NoArgsConstructor
@@ -12,17 +10,24 @@ import lombok.*;
 @ToString
 public class UserRegisterParam {
 
-    @Size(min = 2)
+
+    @NotBlank(message = "First Name is required")
+    @Size(min = 2,message = "First name must be at least 2 characters")
     private String firstName;
 
-    @Size(min = 2)
+
+    @NotBlank(message = "Last Name is required")
+    @Size(min = 2,message = "Last name must be at least 2 characters")
     private String lastName;
-    @Email()
+
+    @NotBlank
+    @Email
     private String email;
 
-    @Past
     private String phone;
 
+
+    @NotBlank
     @Size(min = 8)
     private String password;
 

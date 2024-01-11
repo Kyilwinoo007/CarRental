@@ -9,6 +9,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+import static org.springframework.http.HttpStatus.CREATED;
+
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
@@ -23,7 +25,7 @@ public class UserController {
 
     //Todo response with exception in validation
     @PostMapping("/register")
-   UserRegisterParam registerUser(@Valid @RequestBody UserRegisterParam param){
+   ResponseEntity<UserRegisterParam> registerUser(@Valid @RequestBody UserRegisterParam param){
         //First Name
         //Last Name
         //email required
@@ -42,7 +44,7 @@ public class UserController {
         //validate userInput
         //save to db
         //return success or not
-        return param;
+        return new ResponseEntity<>(param,CREATED);
 
     }
     @PostMapping("/login")
