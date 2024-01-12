@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class OwnerController {
     @PostMapping("/register")
     void registerOwner(){
-        //id  (generate)
         //FirstName
         //LastName
         //Email (required)

@@ -1,7 +1,10 @@
 package com.carrental.CarRental.Controller;
 
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
+import com.carrental.CarRental.ResponseEntity.UserCustomException;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +14,6 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/v1/user")
 public class UserController {
 
-    // User register,Login,Crud
-    //status 500
-    //{
-    //code: 401
-    //message:"Invalid First Name"
-    //}
 
 
     //Todo response with exception in validation
@@ -45,7 +42,16 @@ public class UserController {
 
 
     @PostMapping("/login")
-    void loginUser(@RequestParam(value = "email")String email,@RequestParam(value = "password")String password){
+    void loginUser(@RequestParam(value = "email")
+                   String email,
+                   @RequestParam(value = "password")
+                   String password){
+        if (email.isEmpty()){
+            throw new UserCustomException("Email is required");
+        }
+        if (password.isEmpty()){
+            throw new UserCustomException("Password is required");
+        }
         //email
         //password
     }

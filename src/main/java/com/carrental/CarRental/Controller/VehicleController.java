@@ -9,14 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/vehicle")
 public class VehicleController {
 
-
-
-
-
-
     @PostMapping("/create")
     void createVehicle(){
-        //id generate
         //brandId (Toyota,Nissan)
         //modelId (Wish,Corolla,Note)
         //ModelYear
@@ -25,7 +19,7 @@ public class VehicleController {
         //PlateNumber
         //registerDate (register at system)
         //VehicleTypeId (Van,Sub,MVP,Sedan,MiniVan)
-        //isActive (true,false)  //logic
+        //isActive (true,false)  //optional //logic
 
 
     }
