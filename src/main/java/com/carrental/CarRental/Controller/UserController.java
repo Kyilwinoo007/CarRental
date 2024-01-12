@@ -1,13 +1,9 @@
 package com.carrental.CarRental.Controller;
 
-import com.carrental.CarRental.Data.Model.User;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import java.net.URI;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -32,7 +28,6 @@ public class UserController {
         //phone optional
         //password
 
-
         //book ->
         //dob
         //Houses No.
@@ -47,6 +42,8 @@ public class UserController {
         return new ResponseEntity<>(param,CREATED);
 
     }
+
+
     @PostMapping("/login")
     void loginUser(@RequestParam(value = "email")String email,@RequestParam(value = "password")String password){
         //email

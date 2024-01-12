@@ -12,23 +12,21 @@ public class UserRegisterParam {
 
 
     @NotBlank(message = "First Name is required")
-    @Size(min = 2,message = "First name must be at least 2 characters")
     private String firstName;
 
 
     @NotBlank(message = "Last Name is required")
-    @Size(min = 2,message = "Last name must be at least 2 characters")
     private String lastName;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "Email is required")
+    @Email(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message = "Email is not valid")
     private String email;
 
     private String phone;
 
 
-    @NotBlank
-    @Size(min = 8)
+    @NotBlank(message = "Password is required")
+    @Size(min = 8,message = "Password must be at least 8 characters")
     private String password;
 
 }

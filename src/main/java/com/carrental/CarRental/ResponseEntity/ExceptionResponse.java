@@ -3,26 +3,41 @@ package com.carrental.CarRental.ResponseEntity;
 import java.util.Date;
 
 public class ExceptionResponse {
-    Date timestamp;
+    int status;
+    Long timestamp;
     String message;
-    String details;
 
-    public ExceptionResponse(Date timestamp, String message) {
+
+
+    public ExceptionResponse(int status, Long timestamp, String message) {
+        this.status = status;
         this.timestamp = timestamp;
         this.message = message;
     }
 
-    public ExceptionResponse(Date timestamp, String message, String details) {
-        this.timestamp = timestamp;
-        this.message = message;
-        this.details = details;
+    public int getStatus() {
+        return status;
     }
 
-    public Date getTimestamp() {
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public ExceptionResponse(Long timestamp, String message) {
+        this.timestamp = timestamp;
+        this.message = message;
+    }
+
+
+    public ExceptionResponse() {
+
+    }
+
+    public Long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Long timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -34,11 +49,4 @@ public class ExceptionResponse {
         this.message = message;
     }
 
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details;
-    }
 }
