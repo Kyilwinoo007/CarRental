@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/vehicle")
 public class VehicleController {
 
+
+
+
+
+
     @PostMapping("/create")
     void createVehicle(){
         //id generate
