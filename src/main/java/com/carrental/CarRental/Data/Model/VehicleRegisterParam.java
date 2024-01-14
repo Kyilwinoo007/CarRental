@@ -1,8 +1,8 @@
 package com.carrental.CarRental.Data.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.*;
-
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,21 +20,24 @@ public class VehicleRegisterParam {
     //registerDate (register at system)
     //VehicleTypeId (Van,Sub,MVP,Sedan,MiniVan)
     //isActive (true,false)  //optional //logic
-    @NotBlank(message = "Choose Car Brand")
-    private Integer Brandid;
+    @Min(value = 0,message = "Choose Car Brand")
+    private int brandId;
 
-    @NotBlank(message = "Choose Car Model ")
-    private int Modelid;
+    @Min(value =  0,message = "Choose Car Model ")
+    private int modelId;
 
-    @NotBlank(message = "Model Year is required")
-    private int ModelYear;
-    private String Color;
+    @Min(value = 0,message = "Model Year is required")
+    private int modelYear;
+    private String color;
 
     @NotBlank(message = "Choose correct capacity")
-    private String Capacity;
+    private String capacity;
     @NotBlank(message = "Enter Correct Plate Number")
-    private String PlateNumber;
+    private String plateNumber;
+
+
+    //@JsonProperty("VehicleTypeId")
     @NotBlank(message = "Choose correct Vehicle Type")
-    private String VehicleTypeId;
+    private String vehicleTypeId;
 
 }
