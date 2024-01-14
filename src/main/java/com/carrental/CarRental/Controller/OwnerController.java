@@ -19,12 +19,12 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/v1/owner")
 public class OwnerController {
     @PostMapping("/register")
-        //void registerOwner(){
-        //FirstName
-        //LastName
-        //Email (required)
-        //Phone (optional)
-        //Password (Hash)
+    ResponseEntity<OwnerRegisterParam> registerOwner(@Valid @RequestBody OwnerRegisterParam param) {
+        //First Name
+        //Last Name
+        //email required
+        //phone optional
+        //password
 
         //createVehicle
         //Dob
@@ -35,26 +35,6 @@ public class OwnerController {
         //ICNo.
         //CreatedAt
         //UpdatedAt
-        // }
-
-    ResponseEntity<OwnerRegisterParam> registerOwner(@Valid @RequestBody OwnerRegisterParam param) {
-        //First Name
-        //Last Name
-        //email required
-        //phone optional
-        //password
-
-        //book ->
-        //dob
-        //Houses No.
-        //TownShip
-        //City
-        //Country
-        //IC
-
-        //validate userInput
-        //save to db
-        //return success or not
         return new ResponseEntity<>(param, CREATED);
     }
 

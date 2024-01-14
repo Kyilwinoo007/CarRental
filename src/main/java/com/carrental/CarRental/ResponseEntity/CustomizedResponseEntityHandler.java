@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 @RestControllerAdvice
 public class CustomizedResponseEntityHandler extends ResponseEntityExceptionHandler {
 
+
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request){
         ExceptionResponse response  = new ExceptionResponse(System.currentTimeMillis(),request.getDescription(false));
@@ -39,6 +40,11 @@ public class CustomizedResponseEntityHandler extends ResponseEntityExceptionHand
 
     @ExceptionHandler(UserCustomException.class)
     public final ResponseEntity<Object> handleInvalidUserException(UserCustomException ex, WebRequest request){
+        ExceptionResponse response  = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),System.currentTimeMillis(),ex.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(OwnerCustomException.class)
+    public final ResponseEntity<Object> handleInvalidOwnerException(OwnerCustomException ex, WebRequest request){
         ExceptionResponse response  = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),System.currentTimeMillis(),ex.getMessage());
         return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }

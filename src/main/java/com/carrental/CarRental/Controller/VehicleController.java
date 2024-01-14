@@ -17,7 +17,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 public class VehicleController {
 
     @PostMapping("/create")
-   // void createVehicle(){
+    ResponseEntity<VehicleRegisterParam> registerOwner(@Valid @RequestBody VehicleRegisterParam param) {
         //brandId (Toyota,Nissan)
         //modelId (Wish,Corolla,Note)
         //ModelYear
@@ -27,11 +27,6 @@ public class VehicleController {
         //registerDate (register at system)
         //VehicleTypeId (Van,Sub,MVP,Sedan,MiniVan)
         //isActive (true,false)  //optional //logic
-
-
-   // }
-
-    ResponseEntity<VehicleRegisterParam> registerOwner(@Valid @RequestBody VehicleRegisterParam param) {
         return new ResponseEntity<>(param, CREATED);
     }
 
