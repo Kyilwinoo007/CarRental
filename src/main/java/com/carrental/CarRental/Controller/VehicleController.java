@@ -1,16 +1,23 @@
 package com.carrental.CarRental.Controller;
 
 
+import com.carrental.CarRental.Data.Model.OwnerRegisterParam;
+import com.carrental.CarRental.Data.Model.VehicleRegisterParam;
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/v1/vehicle")
 public class VehicleController {
 
     @PostMapping("/create")
-    void createVehicle(){
+   // void createVehicle(){
         //brandId (Toyota,Nissan)
         //modelId (Wish,Corolla,Note)
         //ModelYear
@@ -22,6 +29,10 @@ public class VehicleController {
         //isActive (true,false)  //optional //logic
 
 
+   // }
+
+    ResponseEntity<VehicleRegisterParam> registerOwner(@Valid @RequestBody VehicleRegisterParam param) {
+        return new ResponseEntity<>(param, CREATED);
     }
 
     //VehicleType
