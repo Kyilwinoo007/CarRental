@@ -1,12 +1,21 @@
 package com.carrental.CarRental.Controller;
 
+import com.carrental.CarRental.Data.Entity.UserEntity;
+import com.carrental.CarRental.Data.Model.Response;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
 import com.carrental.CarRental.ResponseEntity.UserCustomException;
+import com.carrental.CarRental.ResponseEntity.UserNotFoundException;
+import com.carrental.CarRental.Service.IUserService;
+import com.carrental.CarRental.Service.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -14,37 +23,20 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RequestMapping("/v1/user")
 public class UserController {
 
+    @Autowired
+    private IUserService userService;
 
-
-    //Todo response with exception in validation
     @PostMapping("/register")
-   ResponseEntity<UserRegisterParam> registerUser(@Valid @RequestBody UserRegisterParam param){
-        //First Name
-        //Last Name
-        //email required
-        //phone optional
-        //password
-
-        //book ->
-        //dob
-        //Houses No.
-        //TownShip
-        //City
-        //Country
-        //IC
-
-        //validate userInput
-        //save to db
-        //return success or not
-        return new ResponseEntity<>(param,CREATED);
-
+   ResponseEntity<UserEntity> registerUser(@Valid @RequestBody UserRegisterParam param){
+        UserEntity entity =  userService.saveUser(param);
+        return new ResponseEntity<>(entity,CREATED);
     }
 
 
     @PostMapping("/login")
-    void loginUser(@RequestParam(value = "email")
+    ResponseEntity<Response<List<UserEntity>>> loginUser(@RequestParam(value = "email")
                    String email,
-                   @RequestParam(value = "password")
+                       @RequestParam(value = "password")
                    String password){
         if (email.isEmpty()){
             throw new UserCustomException("Email is required");
@@ -52,8 +44,29 @@ public class UserController {
         if (password.isEmpty()){
             throw new UserCustomException("Password is required");
         }
-        //email
-        //password
+
+        List<UserEntity> userList = userService.getUserByEmailAndPassword(email,password);
+        Response<List<UserEntity>> response = new Response<>();
+        if (userList.isEmpty()){
+           throw new UserNotFoundException("User Not Found");
+        }else {
+            response.setCode(HttpStatus.OK.value());
+            response.setMessage("Success");
+            response.setResult(userList);
+        }
+        //another form
+        //success
+        //error
+        return  new ResponseEntity<>(response, HttpStatus.OK);
     }
-    //update
+
+    void getUserById(String Id){
+
+    }
+
+    void updateUserInformation(@RequestBody UserEntity userEntity){
+        //getUser
+        // user.City = userEntity.getCity();
+        //repository.save(user);
+    }
 }
