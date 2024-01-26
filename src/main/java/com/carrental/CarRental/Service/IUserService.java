@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface IUserService {
     UserEntity saveUser(UserRegisterParam param);
-    void getUserById(String Id);
+    void getUserById(int Id);
     List<UserEntity> getUserByEmailAndPassword(String email, String password);
 }

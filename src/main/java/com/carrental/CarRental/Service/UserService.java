@@ -28,7 +28,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void getUserById(String Id) {
+    public void getUserById(int Id) {
         repository.getUserById(Id);
     }
 

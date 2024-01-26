@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -25,6 +26,13 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
+    @GetMapping("/login-user")
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView("user-login");
+//        modelAndView.addObject("todoItems", todoItemService.getAll());
+        return modelAndView;
+    }
 
     @PostMapping("/register")
    ResponseEntity<UserEntity> registerUser(@Valid @RequestBody UserRegisterParam param){
