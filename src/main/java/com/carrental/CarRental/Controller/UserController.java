@@ -27,52 +27,67 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+
     @GetMapping("/login-user")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("user-login");
-//        modelAndView.addObject("todoItems", todoItemService.getAll());
         return modelAndView;
     }
 
     @PostMapping("/register")
-   ResponseEntity<UserEntity> registerUser(@Valid @RequestBody UserRegisterParam param){
-        UserEntity entity =  userService.saveUser(param);
-        return new ResponseEntity<>(entity,CREATED);
+    ResponseEntity<UserEntity> registerUser(@Valid @RequestBody UserRegisterParam param) {
+        UserEntity entity = userService.saveUser(param);
+        return new ResponseEntity<>(entity, CREATED);
     }
 
 
     @PostMapping("/login")
-    ResponseEntity<Response<List<UserEntity>>> loginUser(@RequestParam(value = "email")
-                   String email,
-                       @RequestParam(value = "password")
-                   String password){
-        if (email.isEmpty()){
+    ResponseEntity<Response<List<UserEntity>>> loginUser(@RequestParam(value = "email") String email,
+                                                         @RequestParam(value = "password") String password) {
+        if (email.isEmpty()) {
             throw new UserCustomException("Email is required");
         }
-        if (password.isEmpty()){
+        if (password.isEmpty()) {
             throw new UserCustomException("Password is required");
         }
 
-        List<UserEntity> userList = userService.getUserByEmailAndPassword(email,password);
+        List<UserEntity> userList = userService.getUserByEmailAndPassword(email, password);
         Response<List<UserEntity>> response = new Response<>();
-        if (userList.isEmpty()){
-           throw new UserNotFoundException("User Not Found");
-        }else {
+        if (userList.isEmpty()) {
+            throw new UserNotFoundException("User Not Found");
+        } else {
             response.setCode(HttpStatus.OK.value());
             response.setMessage("Success");
             response.setResult(userList);
         }
-        //another form
-        //success
-        //error
-        return  new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    void getUserById(String Id){
+    @GetMapping("/all-users")
+    ResponseEntity<Response<List<UserEntity>>> getAllUser() {
+        List<UserEntity> userList = userService.getAllUser();
+        Response<List<UserEntity>> response = new Response<>();
+        if (userList.isEmpty()) {
+            throw new UserNotFoundException("User Not Found");
+        } else {
+            response.setCode(HttpStatus.OK.value());
+            response.setMessage("Success");
+            response.setResult(userList);
+        }
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @PutMapping("/update-user")
+    void updateUser(@RequestParam(value = "id") int id,
+                    @RequestParam(value = "phone") String phone){
+         userService.updatePhone(id,phone);
+    }
+
+
+    void getUserById(String Id) {
 
     }
 
-    void updateUserInformation(@RequestBody UserEntity userEntity){
+    void updateUserInformation(@RequestBody UserEntity userEntity) {
         //getUser
         // user.City = userEntity.getCity();
         //repository.save(user);

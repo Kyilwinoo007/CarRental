@@ -27,10 +27,6 @@ public class UserService implements IUserService {
        return repository.save(entity);
     }
 
-    @Override
-    public void getUserById(int Id) {
-        repository.getUserById(Id);
-    }
 
     @Override
     public List<UserEntity> getUserByEmailAndPassword(String email, String password) {
@@ -40,6 +36,24 @@ public class UserService implements IUserService {
     @Override
     public List<UserEntity> getAllUser() {
         return repository.findAll();
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity user) {
+//        var result  = getUserById(user.getId());
+//        result.setPassword(user.getPassword());
+//        repository.save(result);
+        return null;
+    }
+
+    @Override
+    public UserEntity getUserById(int id) {
+        return null;
+    }
+
+    @Override
+    public void updatePhone(int id, String phone) {
+         repository.updatePhone(id,phone);
     }
 
 
