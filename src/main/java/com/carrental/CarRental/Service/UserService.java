@@ -37,6 +37,11 @@ public class UserService implements IUserService {
         return repository.findByEmailAndPassword(email,password);
     }
 
+    @Override
+    public List<UserEntity> getAllUser() {
+        return repository.findAll();
+    }
+
 
     //getAllUser
     //getUserById

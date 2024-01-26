@@ -11,3 +11,10 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
     List<UserEntity> findByEmailAndPassword(String email,String password);
     UserEntity getUserById(String id);
 }
+
+@Repository
+public interface UserRepository extends JpaRepository<UserEntity,Integer> {
+    List<UserEntity> findAll();
+    UserEntity getAllUser();
+}
+
