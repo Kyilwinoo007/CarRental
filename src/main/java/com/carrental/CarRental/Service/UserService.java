@@ -19,11 +19,11 @@ public class UserService implements IUserService {
     @Override
     public UserEntity saveUser(UserRegisterParam param) {
         UserEntity entity = new UserEntity();
-        entity.setFirstName(param.getFirstName());
-        entity.setLastName(param.getLastName());
-        entity.setEmail(param.getEmail());
-        entity.setPhone(param.getPhone());
-        entity.setPassword(param.getPassword());
+//        entity.setFirstName(param.getFirstName());
+//        entity.setLastName(param.getLastName());
+//        entity.setEmail(param.getEmail());
+//        entity.setPhone(param.getPhone());
+//        entity.setPassword(param.getPassword());
        return repository.save(entity);
     }
 

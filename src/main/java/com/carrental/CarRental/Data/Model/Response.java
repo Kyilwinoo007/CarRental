@@ -12,4 +12,15 @@ public class Response<T> {
     String message;
     T Result;
 
+    public void setCode(int value) {
+        code=value;
+    }
+
+    public void setMessage(String success) {
+        message=success;
+    }
+
+    public void setResult(T userList) {
+        Result=userList;
+    }
 }
