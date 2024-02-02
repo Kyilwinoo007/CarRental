@@ -1,4 +1,4 @@
-package com.carrental.CarRental.Controller;
+package com.carrental.CarRental.Controller.Rest;
 
 import com.carrental.CarRental.Data.Entity.UserEntity;
 import com.carrental.CarRental.Data.Model.Response;
@@ -28,16 +28,14 @@ public class UserController {
     private IUserService userService;
 
 
-    @GetMapping("/login-user")
-    public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView("user-login");
-        return modelAndView;
-    }
-
     @PostMapping("/register")
-    ResponseEntity<UserEntity> registerUser(@Valid @RequestBody UserRegisterParam param) {
+    ResponseEntity<Response<UserEntity>> registerUser(@Valid @RequestBody UserRegisterParam param) {
         UserEntity entity = userService.saveUser(param);
-        return new ResponseEntity<>(entity, CREATED);
+        Response<UserEntity> response = new Response<>();
+        response.setCode(CREATED.value());
+        response.setMessage("Success");
+        response.setResult(entity);
+        return new ResponseEntity<>(response, CREATED);
     }
 
 

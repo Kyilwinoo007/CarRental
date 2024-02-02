@@ -1,4 +1,4 @@
-package com.carrental.CarRental.Controller;
+package com.carrental.CarRental.Controller.Rest;
 
 import com.carrental.CarRental.Data.Entity.OwnerEntity;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
