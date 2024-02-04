@@ -26,18 +26,17 @@ public class VehicleRegisterParam {
     @Min(value =  0,message = "Choose Car Model ")
     private int modelId;
 
-    @Min(value = 0,message = "Model Year is required")
-    private int modelYear;
+    @NotBlank(message = "Model Year is required")
+    private String modelYear;
     private String color;
 
-    @NotBlank(message = "Choose correct capacity")
-    private String capacity;
+    @Min(value = 0,message = "Capacity is required")
+    private int capacity;
     @NotBlank(message = "Enter Correct Plate Number")
     private String plateNumber;
 
 
-    //@JsonProperty("VehicleTypeId")
-    @NotBlank(message = "Choose correct Vehicle Type")
-    private String vehicleTypeId;
+    @Min(value = 0,message = "Choose correct Vehicle Type")
+    private int vehicleTypeId;
 
 }
