@@ -20,11 +20,10 @@ public class VehicleRegisterParam {
     //registerDate (register at system)
     //VehicleTypeId (Van,Sub,MVP,Sedan,MiniVan)
     //isActive (true,false)  //optional //logic
-    @Min(value = 0,message = "Choose Car Brand")
-    private int brandId;
 
-    @Min(value =  0,message = "Choose Car Model ")
-    private int modelId;
+    private Item brand;
+
+    private Item model;
 
     @NotBlank(message = "Model Year is required")
     private String modelYear;
@@ -34,9 +33,6 @@ public class VehicleRegisterParam {
     private int capacity;
     @NotBlank(message = "Enter Correct Plate Number")
     private String plateNumber;
-
-
-    @Min(value = 0,message = "Choose correct Vehicle Type")
-    private int vehicleTypeId;
+   private Item vehicleType;
 
 }

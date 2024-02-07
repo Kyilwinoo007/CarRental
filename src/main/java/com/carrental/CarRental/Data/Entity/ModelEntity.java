@@ -15,6 +15,8 @@ public class ModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+    int brandId;
     String modelName;
     Long createdAt;
     Long updatedAt;

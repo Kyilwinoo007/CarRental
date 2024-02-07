@@ -48,6 +48,11 @@ public class CustomizedResponseEntityHandler extends ResponseEntityExceptionHand
         ExceptionResponse response  = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),System.currentTimeMillis(),ex.getMessage());
         return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
+    @ExceptionHandler(ParamException.class)
+    public final ResponseEntity<Object> handleInvalidInputException(ParamException ex, WebRequest request){
+        ExceptionResponse response  = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),System.currentTimeMillis(),ex.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
     @ExceptionHandler(UserNotFoundException.class)
     public final ResponseEntity<Object> handleUserNotFoundException(Exception ex, WebRequest request){
         ExceptionResponse response  = new ExceptionResponse(HttpStatus.NOT_FOUND.value(),System.currentTimeMillis(),ex.getMessage());
