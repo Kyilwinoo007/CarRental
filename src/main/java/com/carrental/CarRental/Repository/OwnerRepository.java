@@ -14,4 +14,7 @@ import java.util.List;
 
 public interface OwnerRepository extends JpaRepository<OwnerEntity,Integer> {
 
+    List<OwnerEntity> findByEmailAndPassword(String email, String password);
+
+    OwnerEntity getOwnerById(int id);
 }

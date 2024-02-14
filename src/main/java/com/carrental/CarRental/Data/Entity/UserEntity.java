@@ -27,6 +27,7 @@ public class UserEntity {
     String city;
     String country;
     String icNo;
+    String father_name;
     String createdAt;
     String updatedAt;
 

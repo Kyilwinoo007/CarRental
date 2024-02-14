@@ -1,6 +1,7 @@
 package com.carrental.CarRental.Service;
 import com.carrental.CarRental.Data.Entity.OwnerEntity;
 import com.carrental.CarRental.Data.Entity.UserEntity;
+import com.carrental.CarRental.Data.Model.OwnerInfoParam;
 import com.carrental.CarRental.Data.Model.OwnerRegisterParam;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
 
@@ -14,4 +15,6 @@ public interface IOwnerService {
     OwnerEntity getOwnerById(int id);
 
     void updateOwnerPhone(int id,String phone);
+
+    OwnerEntity updateOwnerInfo(int id, OwnerInfoParam ownerInfoParam);
 }

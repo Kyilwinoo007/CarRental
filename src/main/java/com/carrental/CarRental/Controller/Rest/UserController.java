@@ -2,6 +2,7 @@ package com.carrental.CarRental.Controller.Rest;
 
 import com.carrental.CarRental.Data.Entity.UserEntity;
 import com.carrental.CarRental.Data.Model.Response;
+import com.carrental.CarRental.Data.Model.UserInfoParam;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
 import com.carrental.CarRental.ResponseEntity.UserCustomException;
 import com.carrental.CarRental.ResponseEntity.UserNotFoundException;
@@ -74,20 +75,18 @@ public class UserController {
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @PutMapping("/update-user")
-    void updateUser(@RequestParam(value = "id") int id,
-                    @RequestParam(value = "phone") String phone){
-         userService.updatePhone(id,phone);
-    }
 
 
-    void getUserById(String Id) {
-
-    }
-
-    void updateUserInformation(@RequestBody UserEntity userEntity) {
-        //getUser
-        // user.City = userEntity.getCity();
-        //repository.save(user);
+    @PutMapping("/update_user_info")
+    ResponseEntity<Response<UserEntity>> updateUserInformation(@RequestParam(value = "id") int id,@RequestBody UserInfoParam userInfoParam) {
+        if (id < 0) {
+            throw new UserCustomException("Please enter valid id!");
+        }
+       UserEntity userEntity =  userService.updateUserInfo(id,userInfoParam);
+        Response<UserEntity> response = new Response<>();
+            response.setCode(HttpStatus.OK.value());
+            response.setMessage("Success");
+            response.setResult(userEntity);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

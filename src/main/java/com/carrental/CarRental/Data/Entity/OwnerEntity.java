@@ -14,20 +14,6 @@ import org.springframework.boot.autoconfigure.web.WebProperties;
 @ToString
 
 public class OwnerEntity {
-    //First Name
-    //Last Name
-    //email required
-    //phone optional
-    //password
-    //createVehicle
-    //Dob
-    //HomeNo.
-    //Township
-    //City
-    //Country
-    //ICNo.
-    //CreatedAt
-    //UpdatedAt
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
@@ -36,14 +22,13 @@ public class OwnerEntity {
     String email;
     String phone;
     String password;
-    String createVehicle;
-
     String dob;
     String homeNo;
     String townShip;
     String city;
     String country;
     String icNo;
+    String fatherName;
     String createdAt;
     String updatedAt;
 

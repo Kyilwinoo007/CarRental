@@ -2,8 +2,10 @@ package com.carrental.CarRental.Service;
 
 
 import com.carrental.CarRental.Data.Entity.UserEntity;
+import com.carrental.CarRental.Data.Model.UserInfoParam;
 import com.carrental.CarRental.Data.Model.UserRegisterParam;
 import com.carrental.CarRental.Repository.UserRepository;
+import com.carrental.CarRental.ResponseEntity.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,17 +39,10 @@ public class UserService implements IUserService {
         return repository.findAll();
     }
 
-    @Override
-    public UserEntity updateUser(UserEntity user) {
-//        var result  = getUserById(user.getId());
-//        result.setPassword(user.getPassword());
-//        repository.save(result);
-        return null;
-    }
 
     @Override
     public UserEntity getUserById(int id) {
-        return null;
+        return repository.getUserById(id);
     }
 
     @Override
@@ -55,10 +50,23 @@ public class UserService implements IUserService {
          repository.updatePhone(id,phone);
     }
 
+    @Override
+    public UserEntity updateUserInfo(int id, UserInfoParam userInfoParam) {
+        UserEntity user = getUserById(id);
+        if (user == null){
+            throw new UserNotFoundException("User does not exist!");
+        }
+        user.setPhone(userInfoParam.getPhone());
+        user.setDob(userInfoParam.getDob());
+        user.setHomeNo(userInfoParam.getHomeNo());
+        user.setTownShip(userInfoParam.getTownShip());
+        user.setCity(userInfoParam.getCity());
+        user.setCountry(userInfoParam.getCountry());
+        user.setIcNo(userInfoParam.getIcNo());
+        user.setFather_name(userInfoParam.getFather_name());
+        user.setUpdatedAt(System.currentTimeMillis() + "");
+        return repository.save(user);
+    }
 
-    //getAllUser
-    //getUserById
-    //saveUser
-    //updateUser
 
 }

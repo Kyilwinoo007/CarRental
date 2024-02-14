@@ -17,9 +17,6 @@ public interface UserRepository extends JpaRepository<UserEntity,Integer> {
 
     List<UserEntity> findAll();
 
-//    @Modifying
-//    @Query("Select * From user")
-//    List<UserEntity> findFirst20Rows();
 
     @Transactional
     @Modifying(clearAutomatically = true)
