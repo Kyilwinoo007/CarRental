@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="ISO-8859-1" />
-    <title>User Login</title>
+    <title>Create Vehicle</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet"
@@ -13,33 +13,94 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<!--    <script src="/postRequest.js"></script>-->
-    <script src="/getRequest.js"></script>
+    <script src="/createVehicle.js"></script>
 </head>
 <body>
 
 <div id="postResultDiv" align="center"></div>
 <div class="container">
-    <h2>Login</h2>
-<!--    <form id="loginUser">-->
-<!--        <div class="form-group">-->
-<!--            <label for="email">Email :</label> <input type="text"-->
-<!--                                                      class="form-control" id="email" placeholder="Enter Email"-->
-<!--                                                      name="email">-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--            <label for="password">Password :</label> <input type="password"-->
-<!--                                                            class="form-control" id="password" placeholder="Enter Password"-->
-<!--                                                            name="password">-->
-<!--        </div>-->
-<!--        <div class="form-group form-check">-->
-<!--            <label class="form-check-label"> <input-->
-<!--                    class="form-check-input" type="checkbox" name="remember">-->
-<!--                Remember me-->
-<!--            </label>-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-primary">Submit</button>-->
-<!--    </form>-->
+    <h2>Create Vehicle</h2>
+    <form id="createVehicle">
+
+            <div class="row">
+                <div class="col-2">Brands</div>
+                <div class="col-6">
+                    <select id="brands" class="form-control">
+                        <option value='-1'>Select Brands</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <input type="button" id="addBrand" value="Add">
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-2">Models</div>
+                <div class="col-6">
+                    <select id="models" class="form-control">
+                        <option value='-1'>Select Models</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <input type="button" id="addModel" value="Add">
+                </div>
+            </div>
+            <br/>
+
+            <div class="row">
+                <div class="col-2">Vehicle Types</div>
+                <div class="col-6">
+                    <select id="vehicleTypes" class="form-control">
+                        <option value='-1'>Select Vehicle Types</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <input type="button" id="addVehicleType" value="Add">
+                </div>
+            </div>
+        <br/>
+        <div class="row">
+            <div class="col-2">Model Year :</div>
+            <div class="col-6">
+            <input type="number"
+                                                               class="form-control" id="modelYear" placeholder="Enter Model Year"
+                                                               name="modelYear">
+            </div>
+        </div>
+        <br/>
+
+        <div class="row">
+            <div class="col-2">Color :</div>
+            <div class="col-6">
+            <input type="text"
+                                                               class="form-control" id="color" placeholder="Enter Vehicle Color"
+                                                               name="color">
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-2">No. of Seats :</div>
+            <div class="col-6">
+           <input type="number"
+                                                      class="form-control" id="capacity" placeholder="Enter Number of Seat"
+                                                      name="capacity">
+                </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-2">Plate Number :</div>
+            <div class="col-6">
+            <input type="text"
+
+                   class="form-control" id="plateNumber" placeholder="Enter Plate Number"
+
+                   name="plateNumber">
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 </body>
