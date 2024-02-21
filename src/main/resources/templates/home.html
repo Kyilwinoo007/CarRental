@@ -13,8 +13,84 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="/home.js"></script>
 </head>
 <body>
-<div th:replace="./header :: header"></div>
+<div class="container base">
+    <div class="row base-row">
+        <div class="col-3 menu">
+            <div class="logo mb-5 text-center text-light bg-dark pt-1 pb-1">
+                <h4>Car Rental</h4>
+            </div>
+            <ul class="list">
+                <li><a th:href="@{/}"><i class="fas fa-home"></i>&nbsp;&nbsp;Home</a></li>
+                <li><a th:href="@{/register}"><i class="fas fa-user-plus"></i>&nbsp;&nbsp;Register</a></li>
+                <li><a th:href="@{/loginForm}"><i class="fas fa-users"></i>&nbsp;&nbsp;Login</a></li>
+                <li><a href=""><i class="fas fa-address-card"></i>&nbsp;&nbsp;About
+                    us</a></li>
+                <li><a href=""><i class="fas fa-phone-square-alt"></i>&nbsp;&nbsp;Contact
+                    us</a></li>
+            </ul>
+        </div>
+        <div class="col-9 seat-main">
+            <tr th:each="vehicle: ${vehicles}">
+                <td>
+                    <div class="row">
+                        <div class="col-2">Id :</div>
+                        <div class="col-6">
+                            <span th:text="${vehicle.id}" th:remove="tag">Id</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">Brand :</div>
+                        <div class="col-6">
+                            <span th:text="${vehicle.brand}" th:remove="tag">Brand</span>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-2">Model :</div>
+                            <div class="col-6">
+                                <span th:text="${vehicle.model}" th:remove="tag">Model</span>
+                            </div>
+                        </div>
+                    <div class="row">
+                    <div class="col-2">Model Year :</div>
+                    <div class="col-6">
+                        <span th:text="${vehicle.modelYear}" th:remove="tag">Year</span>
+                    </div>
+                </div>
+                    <div class="row">
+                        <div class="col-2">Color :</div>
+                        <div class="col-6">
+                            <span th:text="${vehicle.color}" th:remove="tag">Color</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-2">Capacity :</div>
+                        <div class="col-6">
+                            <span th:text="${vehicle.capacity}" th:remove="tag">Capacity</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-2">Plate Number :</div>
+                        <div class="col-6">
+                            <span th:text="${vehicle.plateNumber}" th:remove="tag">Plate Number</span>
+                        </div>
+                    </div>
+
+                </td>
+
+                </br>
+            </tr>
+
+        </div>
+
+        <br>
+
+    </div>
+
+</div>
 </body>
 </html>

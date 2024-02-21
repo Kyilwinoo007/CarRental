@@ -12,3 +12,10 @@ public class CarRentalApplication {
 	}
 
 }
+
+
+//version 1 -> UserLogin/Register, OwnerLogin/Register
+//version 2 -> Vehicle
+//version3 -> renting
+//version 4 -> payment
+//version 5 -> etc..
