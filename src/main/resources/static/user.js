@@ -22,7 +22,7 @@ $(document).ready(
 					dataType : 'json',
 					success : function(result) {
 					alert(result.message);
-					window.location = '/v1/user/home';
+					window.location = '/v1/home';
 
 //					 window.location.href = '/JspControllerHandler?employee='+ JSON.stringify(emp); // redirect     //this would be GET
 					},
@@ -35,7 +35,6 @@ $(document).ready(
 				});
 
 			}
-
 			//Register User
 			$("#registerUser").submit(function(event) {
             				// Prevent the form from submitting via the browser.
@@ -64,7 +63,7 @@ $(document).ready(
             					dataType : 'json',
             					success : function(result) {
             					alert(result.message);
-            					//Todo redirect
+            					window.location = '/v1/home';
             					},
             					error : function(e) {
             					   var loginError = e["responseJSON"];
