@@ -34,6 +34,10 @@ public class VehicleEntity {
     int vehicleTypeId;  //sub,minivan
     boolean isActive;  //system
 
+    int rentalId;
+    int feeId;
+    boolean status;
+
     Long createdAt;
     Long updatedAt;
 

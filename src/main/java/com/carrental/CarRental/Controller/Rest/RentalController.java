@@ -1,15 +1,21 @@
 package com.carrental.CarRental.Controller.Rest;
 
 
+import com.carrental.CarRental.Data.Entity.OwnerEntity;
 import com.carrental.CarRental.Data.Entity.RentalFee;
 import com.carrental.CarRental.Data.Entity.RentalType;
 import com.carrental.CarRental.Data.Entity.VehicleEntity;
+import com.carrental.CarRental.Data.Model.OwnerInfoParam;
 import com.carrental.CarRental.Data.Model.Response;
 import com.carrental.CarRental.Data.Model.VehicleRegisterParam;
+import com.carrental.CarRental.ResponseEntity.OwnerCustomException;
 import com.carrental.CarRental.ResponseEntity.ParamException;
+import com.carrental.CarRental.ResponseEntity.RentException;
 import com.carrental.CarRental.Service.IRentalService;
+import com.carrental.CarRental.Service.IVehicleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,6 +31,9 @@ public class RentalController {
 
     @Autowired
     IRentalService rentalService;
+
+    @Autowired
+    IVehicleService vehicleService;
 
     @PostMapping("/rentalType")
     ResponseEntity<Response<RentalType>> createRentalType(@RequestParam(value = "description") String description) {
@@ -74,6 +83,22 @@ public class RentalController {
         response.setResult(rentalFee);
         return new ResponseEntity<>(response, OK);
     }
+
+//    @PutMapping("/updateVehicle")
+//    ResponseEntity<Response<OwnerEntity>> updateVehicleRentingInfo(@RequestParam(value = "id") int id,
+//                                                                 @RequestBody OwnerInfoParam ownerInfoParam) {
+//        if (id < 0) {
+//            throw new RentException("Please enter valid id!");
+//        }
+//        OwnerEntity ownerEntity =  vehicleService.updatePaymentInfo(id,ownerInfoParam);
+//        Response<OwnerEntity> response = new Response<>();
+//        response.setCode(HttpStatus.OK.value());
+//        response.setMessage("Success");
+//        response.setResult(ownerEntity);
+//        return new ResponseEntity<>(response, HttpStatus.OK);
+//    }
+
+
 
 
 
