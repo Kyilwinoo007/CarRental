@@ -1,20 +1,16 @@
 package com.carrental.CarRental.ResponseEntity;
 
-import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.ValidationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -57,6 +53,12 @@ public class CustomizedResponseEntityHandler extends ResponseEntityExceptionHand
     public final ResponseEntity<Object> handleUserNotFoundException(Exception ex, WebRequest request){
         ExceptionResponse response  = new ExceptionResponse(HttpStatus.NOT_FOUND.value(),System.currentTimeMillis(),ex.getMessage());
         return new ResponseEntity(response,HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(RentException.class)
+    public final ResponseEntity<Object> handleRentException(RentException ex, WebRequest request){
+        ExceptionResponse response  = new ExceptionResponse(HttpStatus.BAD_REQUEST.value(),System.currentTimeMillis(),ex.getMessage());
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 }
 

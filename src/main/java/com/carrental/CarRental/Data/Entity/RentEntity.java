@@ -18,6 +18,15 @@ public class RentEntity {
     int vehicleId;
     int userId;
     String status;
-    Long startDate;
+    String startDate;
+    String endDate;
+
+    double fee;
+
+    String uom;    //hr/day
+
+    int qty;      //3 hr/ 3 days
+
+    double totalAmount;
 
 }
