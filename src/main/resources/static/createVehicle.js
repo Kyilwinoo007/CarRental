@@ -1,5 +1,6 @@
 $(document).ready(
 		function() {
+		var feeId = 0;
             $.ajax({
             type:"GET",
             contentType:"application/json",
@@ -70,6 +71,8 @@ $(document).ready(
                         }
                          });
 
+
+
               $("#createVehicle").submit(function(event) {
               				// Prevent the form from submitting via the browser.
               				event.preventDefault();
@@ -84,15 +87,50 @@ $(document).ready(
               				var color = $("#color").val();
               				var capacity = $("#capacity").val();
               				var plateNumber = $("#plateNumber").val();
-
+              				console.log(feeId);
+              				//url - /v1/vehicle/vehicle
+              				//todo create vehicle api call
               			}
               $("#addBrand").click(function(){
                console.log("Add Brand");
               });
                $("#addModel").click(function(){
-                             console.log("Add Model");
+                      console.log("Add Model");
                   });
                $("#addVehicleType").click(function(){
                   console.log("Add Vehicle Type");
                });
+               $("#addRent").click(function(){
+               console.log("Add Rent");
+
+               });
+                $("#addFee").click(function(){
+                console.log("add fee")
+                     createFee();
+                });
+
+                function createFee(){
+                                var feePerHr = $("#fee_per_hr").val();
+                                var feePerDay = $("#fee_per_day").val();
+                                //create fee api
+                                	$.ajax({
+                                					type : "POST",
+                                					contentType : "application/json",
+                                					url : "/v1/rent/fee",
+                                                    data : jQuery.param({ per_hr: feePerHr, per_day : feePerDay}),
+                                                     contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                					dataType : 'json',
+                                					success : function(response) {
+                                					 var result = response.result;
+                                					feeId = result.id;
+                                   },
+                                					error : function(e) {
+
+                                                        var loginError = e["responseJSON"];
+                                                        alert(loginError["message"]);
+
+                                					}
+                                				});
+
+                                }
 		})

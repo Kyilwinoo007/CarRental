@@ -25,8 +25,6 @@ import static org.springframework.http.HttpStatus.OK;
 @RequestMapping("/v1/vehicle")
 public class VehicleController {
 
-
-
     @Autowired
     IVehicleService vehicleService;
 
